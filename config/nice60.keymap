@@ -43,10 +43,10 @@
 // ------------------------------------------------------------------------------------------------
 			bindings = <
 	&kp GRAVE   &kp F1 &kp F2     &kp F3    &kp F4           &kp F5         &kp F6    &kp F7     &kp F8      &kp F9   &kp F10  &kp F11 &kp F12  &kp INS
-	&kp TAB      &kp    &kp        &kp       &kp              &kp &kp PG_UP  &kp HOME  &kp UP     &kp END     &kp      &kp      &kp     &kp BSLH
-	&tog 2        &kp    &kp PSCRN  &kp SLCK  &kp PAUSE_BREAK  &kp &kp PG_DN  &kp LEFT  &kp DOWN   &kp RIGHT   &kp      &kp      &kp RET
-	&kp LSHFT       &kp    &kp        &kp       &kp              &kp &kp        &kp       &kp        &kp         &kp      &kp RSHFT
-	&kp LCTRL  &kp LGUI   &kp LALT                            &kp space                       &kp RALT     &trans      &kp K_APP    &kp
+	&kp TAB      &none  &none      &none     &none            &none &kp PG_UP  &kp HOME  &kp UP     &kp END     &none    &none    &none   &kp BSLH
+	&tog 2        &none  &kp PSCRN  &kp SLCK  &kp PAUSE_BREAK  &none &kp PG_DN  &kp LEFT  &kp DOWN   &kp RIGHT   &none    &none    &kp RET
+	&kp LSHFT       &none  &none        &none     &none            &none &none      &none       &none        &none       &none    &kp RSHFT
+	&kp LCTRL  &kp LGUI   &kp LALT                            &kp space                       &kp RALT     &trans      &kp K_APP    &none
 			>;
 		};
 
@@ -59,11 +59,11 @@
 // |   CTL  |      | ALT |             SPACE                   |  0   |  .   |         |          |
 // ------------------------------------------------------------------------------------------------
 			bindings = <
-	&kp ESC     &kp    &kp        &kp       &kp              &kp  &kp       &kp        &kp KP_NUM &kp  &kp KP_DIVIDE  &kp KP_MULTIPLY &kp KP_MINUS  &kp BSPC
-	&kp TAB      &kp    &kp        &kp       &kp              &kp  &kp        &kp       &kp KP_N7  &kp KP_N8   &kp KP_N9    &kp KP_PLUS  &kp     &kp
-	&tog 2        &kp    &kp        &kp       &kp              &kp  &kp        &kp       &kp KP_N4  &kp KP_N5   &kp KP_N6    &kp          &kp RET
-	&kp LSHFT       &kp    &kp        &kp       &kp              &kp  &kp        &kp       &kp KP_N1  &kp KP_N2   &kp KP_N3       &kp
-	&kp LCTRL  &kp        &kp LALT                            &kp space                             &kp KP_N0    &kp KP_DOT        &kp    &kp
+	&kp ESC     &none  &none      &none     &none            &none  &none     &none      &kp KP_NUM &none  &kp KP_DIVIDE  &kp KP_MULTIPLY &kp KP_MINUS  &kp BSPC
+	&kp TAB      &none  &none      &none     &none            &none  &none      &none     &kp KP_N7  &kp KP_N8   &kp KP_N9    &kp KP_PLUS  &none   &none
+	&tog 2        &none  &none      &none     &none            &none  &none      &none     &kp KP_N4  &kp KP_N5   &kp KP_N6    &none        &kp RET
+	&kp LSHFT       &none  &none      &none     &none            &none  &none      &none     &kp KP_N1  &kp KP_N2   &kp KP_N3       &none
+	&kp LCTRL  &none        &kp LALT                            &kp space                             &kp KP_N0    &kp KP_DOT        &none  &none
 			>;
 		};
 
@@ -76,11 +76,11 @@
 // |   BT 4  |      |      |                                    |         |       |       |       |
 // ------------------------------------------------------------------------------------------------
 			bindings = <
-	&bt BT_CLR   &kp F1           &kp F2                  &kp F3    &kp F4           &kp F5           &kp F6           &kp F7           &kp F8     &kp F9    &kp F10          &kp F11      &kp F12  &kp
-	&bt BT_SEL 0  &rgb_ug RGB_TOG  &rgb_ug RGB_EFF         &kp       &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI  &kp PSCRN  &kp SLCK  &kp PAUSE_BREAK  &kp UP       &kp        &kp
-	&bt BT_SEL 1   &kp              &rgb_ug RGB_EFR         &kp       &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &kp HOME   &kp PG_UP  &kp LEFT        &kp RIGHT             &kp
-	&bt BT_SEL 2     &kp              &kp                     &kp       &kp              &kp              &kp              &kp              &kp END    &kp PG_DN        &kp DOWN        &kp   
-	&bt BT_SEL 3  &kp  &kp                              &kp                                                  &kp            &kp         &kp                  &kp
+	&bt BT_CLR   &kp F1           &kp F2                  &kp F3    &kp F4           &kp F5           &kp F6           &kp F7           &kp F8     &kp F9    &kp F10          &kp F11      &kp F12  &none
+	&bt BT_SEL 0  &rgb_ug RGB_TOG  &rgb_ug RGB_EFF         &none     &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI  &kp PSCRN  &kp SLCK  &kp PAUSE_BREAK  &kp UP       &none      &none
+	&bt BT_SEL 1   &none            &rgb_ug RGB_EFR         &none     &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &kp HOME   &kp PG_UP  &kp LEFT        &kp RIGHT             &none
+	&bt BT_SEL 2     &none            &none                   &none     &none            &none            &none            &none            &kp END    &kp PG_DN        &kp DOWN        &none   
+	&bt BT_SEL 3  &none  &none                          &none                                                &none          &none       &none                &none
 			>;
 		};
 	};
