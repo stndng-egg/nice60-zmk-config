@@ -51,8 +51,8 @@ jobs:
             ARTIFACT_NAME="${{ matrix.board }}-zmk"
           fi
 
-          echo ::set-output name=shield-arg::${SHIELD_ARG}
-          echo ::set-output name=artifact-name::${ARTIFACT_NAME}
+          echo "shield-arg=${SHIELD_ARG}" >> $GITHUB_OUTPUT
+          echo "artifact-name=${ARTIFACT_NAME}" >> $GITHUB_OUTPUT
       - name: Build (west build)
         run: west build -s zmk/app -b ${{ matrix.board }} -- ${{ steps.variables.outputs.shield-arg }}
           -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
