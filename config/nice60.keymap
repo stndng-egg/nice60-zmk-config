@@ -5,12 +5,10 @@
  */
 
 #include <behaviors.dtsi>
+#include <dt-bindings/zmk/reset.h>
+#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/rgb.h>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/outputs.h>
-#include <dt-bindings/zmk/reset.h>
-#include <dt-bindings/zmk/ext_power.h>
 
 / {
     behaviors {
@@ -19,81 +17,86 @@
             label = "TILDE_ESCAPE";
             #binding-cells = <0>;
             bindings = <&kp ESC>, <&kp TILDE>;
+
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
 };
 
 / {
-	keymap {
-		compatible = "zmk,keymap";
-		
-		default_layer {
-// ------------------------------------------------------------------------------------------
-// | ESC~ |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |  -  |  =  |   BSPC  |
-// | TAB  |  Q  |  W  |  E  |  R  |  T  |  Y  |  U  |  I  |  O  |  P  |  [  |  ]  |   DEL   |
-// | LT(2, CAPS)  |  A  |  S  |  D  |  F  |  G  |  H  |  J  |  K  |  L  |  ;  |  '  | ENTER |
-// |  SHIFT  |  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  |  /  |      SHIFT       |
-// |  CTL  |  WIN  |  ALT  |            SPACE              |  ALT  |  MO(1)  | RApp |LT(3,CTL)|
-// ------------------------------------------------------------------------------------------
-			bindings = <
-	&tldesc  &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS &kp EQUAL  &kp BSPC
-	&kp TAB  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &kp LBKT  &kp RBKT  &kp DEL
-	&lt 2 CLCK  &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K  &kp L  &kp SEMI &kp SQT           &kp RET
-	&kp LSHFT   &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA &kp DOT &kp FSLH           &kp RSHFT
-	&kp LCTRL &kp LGUI &kp LALT             &kp SPACE                     &kp RALT  &mo 1  &kp K_APP   &lt 3 RCTRL
-			>;
-		};
+    keymap {
+        compatible = "zmk,keymap";
 
-		nav_layer {
-// ------------------------------------------------------------------------------------------------
-// |    `   | F1  | F2  | F3  | F4  | F5  | F6  | F7  | F8  | F9  | F10  | F11 | F12 |   Insert   |
-// |  TAB    |     |     |     |     |     |PG_UP|HOME |  UP | END |      |     |     |   "\"     |
-// |  TG(2)   |     |Print|Scroll|Pause|    |PG_DN| LT  | DN  | RT  |      |     |       ENTER    |
-// |    SHIFT   |     |     |      |     |    |     |     |     |     |     |        SHIFT        |
-// |   CTL  | WIN  | ALT |             SPACE                    | ALT |  trans  |  RApp   |       |
-// ------------------------------------------------------------------------------------------------
-			bindings = <
-	&kp GRAVE   &kp F1 &kp F2     &kp F3    &kp F4           &kp F5         &kp F6    &kp F7     &kp F8      &kp F9   &kp F10  &kp F11 &kp F12  &kp INS
-	&kp TAB      &none  &none      &none     &none            &none &kp PG_UP  &kp HOME  &kp UP     &kp END     &none    &none    &none   &kp BSLH
-	&tog 2        &none  &kp PSCRN  &kp SLCK  &kp PAUSE_BREAK  &none &kp PG_DN  &kp LEFT  &kp DOWN   &kp RIGHT   &none    &none    &kp RET
-	&kp LSHFT       &none  &none        &none     &none            &none &none      &none       &none        &none       &none    &kp RSHFT
-	&kp LCTRL  &kp LWIN   &kp LALT                            &kp SPACE                       &kp RALT     &trans      &kp K_CMENU    &none
-			>;
-		};
+        default_layer {
+            // ------------------------------------------------------------------------------------------
+            // | ESC~ |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |  -  |  =  |   BSPC  |
+            // | TAB  |  Q  |  W  |  E  |  R  |  T  |  Y  |  U  |  I  |  O  |  P  |  [  |  ]  |   DEL   |
+            // | LT(2, CAPS)  |  A  |  S  |  D  |  F  |  G  |  H  |  J  |  K  |  L  |  ;  |  '  | ENTER |
+            // |  SHIFT  |  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  |  /  |      SHIFT       |
+            // |  CTL  |  WIN  |  ALT  |            SPACE              |  ALT  |  MO(1)  | RApp |LT(3,CTL)|
+            // ------------------------------------------------------------------------------------------
 
-		numpad_layer {
-// ------------------------------------------------------------------------------------------------
-// |  ESC   |     |     |     |     |     |     |     |     |     |      |     |     |   BSPC     |
-// |  TAB    |  F1 |  F2 |  F3 |  F4 |     |  *  |  7  |  8  |  9  |   /  |     |     |           |
-// |  TG(2)   |  F5 |  F6 |  F7  |  F8 |    |  +  |  4  |  5  |  6  |  -   |     |       ENTER    |
-// |    SHIFT   |  F9 | F10 | F11 | F12 |    | Calc|  1  |  2  |  3  |     |                      |
-// |   CTL  |      | ALT |                0                    |  .   |      |         |          |
-// ------------------------------------------------------------------------------------------------
-			bindings = <
-	&kp ESC     &none  &none      &none     &none            &none  &none           &none     &none      &none       &none         &none        &none   &kp BSPC
-	&kp TAB      &kp F1 &kp F2     &kp F3    &kp F4           &none  &kp KP_MULTIPLY &kp KP_N7 &kp KP_N8  &kp KP_N9   &kp KP_DIVIDE &none        &none   &none
-	&tog 2        &kp F5 &kp F6     &kp F7    &kp F8           &none  &kp KP_PLUS     &kp KP_N4 &kp KP_N5  &kp KP_N6   &kp KP_MINUS  &none        &kp RET
-	&kp LSHFT       &kp F9 &kp F10    &kp F11   &kp F12          &none  &kp C_AL_CALC     &kp KP_N1 &kp KP_N2  &kp KP_N3   &none              &none
-	&kp LCTRL  &none        &kp LALT                            &kp KP_N0                             &kp KP_DOT   &none             &none  &none
-			>;
-		};
+            bindings = <
+&tldesc     &kp N1    &kp N2  &kp N3    &kp N4  &kp N5  &kp N6     &kp N7  &kp N8     &kp N9   &kp N0    &kp MINUS  &kp EQUAL  &kp BSPC
+&kp TAB     &kp Q     &kp W   &kp E     &kp R   &kp T   &kp Y      &kp U   &kp I      &kp O    &kp P     &kp LBKT   &kp RBKT   &kp DEL
+&lt 2 CLCK  &kp A     &kp S   &kp D     &kp F   &kp G   &kp H      &kp J   &kp K      &kp L    &kp SEMI  &kp SQT               &kp RET
+&kp LSHFT   &kp Z     &kp X   &kp C     &kp V   &kp B   &kp N      &kp M   &kp COMMA  &kp DOT  &kp FSLH                        &kp RSHFT
+&kp LCTRL   &kp LGUI          &kp LALT                  &kp SPACE                              &kp RALT  &mo 1      &kp K_APP  &lt 3 RCTRL
+            >;
+        };
 
-		BT_layer {
-// ------------------------------------------------------------------------------------------------
-// | BT CLR |         |     |   |     |     |     |     |     |     |      |     |     |          |
-// |  BT 1   | RGB_TOG | EFF |   | HUEUP | SATUP | BRIUP | SPDUP |Print|Scrll|Pause|UP|  |        |
-// |   BT 2   |         | EFR |   | HUEDN | SATDN | BRIDN | SPDDN |HOME |PGUP |LT   |RT|          |
-// |    BT 3     |        |     |   |       |       |       |       | END | PGDN| DN  |           |
-// |   BT 4  |      |      |                                    |         |       |       |       |
-// ------------------------------------------------------------------------------------------------
-			bindings = <
-	&bt BT_CLR   &none            &none                   &none     &none            &none            &none            &none            &none      &none     &none            &none        &none    &none
-	&bt BT_SEL 0  &rgb_ug RGB_TOG  &rgb_ug RGB_EFF         &none     &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI  &kp PSCRN  &kp SLCK  &kp PAUSE_BREAK  &kp UP       &none      &none
-	&bt BT_SEL 1   &none            &rgb_ug RGB_EFR         &none     &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &kp HOME   &kp PG_UP  &kp LEFT        &kp RIGHT             &none
-	&bt BT_SEL 2     &none            &none                   &none     &none            &none            &none            &none            &kp END    &kp PG_DN        &kp DOWN        &none   
-	&bt BT_SEL 3  &none  &none                          &none                                                &none          &none       &none                &none
-			>;
-		};
-	};
+        nav_layer {
+            // ------------------------------------------------------------------------------------------------
+            // |    `   | F1  | F2  | F3  | F4  | F5  | F6  | F7  | F8  | F9  | F10  | F11 | F12 |   Insert   |
+            // |  TAB    |     |     |     |     |     |PG_UP|HOME |  UP | END |      |     |     |   "\"     |
+            // |  TG(2)   |     |Print|Scroll|Pause|    |PG_DN| LT  | DN  | RT  |      |     |       ENTER    |
+            // |    SHIFT   |     |     |      |     |    |     |     |     |     |     |        SHIFT        |
+            // |   CTL  | WIN  | ALT |             SPACE                    | ALT |  trans  |  RApp   |       |
+            // ------------------------------------------------------------------------------------------------
+
+            bindings = <
+&kp GRAVE  &kp F1    &kp F2     &kp F3    &kp F4           &kp F5  &kp F6     &kp F7    &kp F8    &kp F9     &kp F10   &kp F11  &kp F12      &kp INS
+&kp TAB    &none     &none      &none     &none            &none   &kp PG_UP  &kp HOME  &kp UP    &kp END    &none     &none    &none        &kp BSLH
+&tog 2     &none     &kp PSCRN  &kp SLCK  &kp PAUSE_BREAK  &none   &kp PG_DN  &kp LEFT  &kp DOWN  &kp RIGHT  &none     &none                 &kp RET
+&kp LSHFT  &none     &none      &none     &none            &none   &none      &none     &none     &none      &none                           &kp RSHFT
+&kp LCTRL  &kp LWIN             &kp LALT                           &kp SPACE                                 &kp RALT  &trans   &kp K_CMENU  &none
+            >;
+        };
+
+        numpad_layer {
+            // ------------------------------------------------------------------------------------------------
+            // |  ESC   |     |     |     |     |     |     |     |     |     |      |     |     |   BSPC     |
+            // |  TAB    |  F1 |  F2 |  F3 |  F4 |     |  *  |  7  |  8  |  9  |   /  |     |     |           |
+            // |  TG(2)   |  F5 |  F6 |  F7  |  F8 |    |  +  |  4  |  5  |  6  |  -   |     |       ENTER    |
+            // |    SHIFT   |  F9 | F10 | F11 | F12 |    | Calc|  1  |  2  |  3  |     |                      |
+            // |   CTL  |      | ALT |                0                    |  .   |      |         |          |
+            // ------------------------------------------------------------------------------------------------
+
+            bindings = <
+&kp ESC    &none   &none    &none     &none    &none  &none            &none      &none      &none      &none          &none  &none  &kp BSPC
+&kp TAB    &kp F1  &kp F2   &kp F3    &kp F4   &none  &kp KP_MULTIPLY  &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_DIVIDE  &none  &none  &none
+&tog 2     &kp F5  &kp F6   &kp F7    &kp F8   &none  &kp KP_PLUS      &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp KP_MINUS   &none         &kp RET
+&kp LSHFT  &kp F9  &kp F10  &kp F11   &kp F12  &none  &kp C_AL_CALC    &kp KP_N1  &kp KP_N2  &kp KP_N3  &none                        &none
+&kp LCTRL  &none            &kp LALT                  &kp KP_N0                                         &kp KP_DOT     &none  &none  &none
+            >;
+        };
+
+        BT_layer {
+            // ------------------------------------------------------------------------------------------------
+            // | BT CLR |         |     |   |     |     |     |     |     |     |      |     |     |          |
+            // |  BT 1   | RGB_TOG | EFF |   | HUEUP | SATUP | BRIUP | SPDUP |Print|Scrll|Pause|UP|  |        |
+            // |   BT 2   |         | EFR |   | HUEDN | SATDN | BRIDN | SPDDN |HOME |PGUP |LT   |RT|          |
+            // |    BT 3     |        |     |   |       |       |       |       | END | PGDN| DN  |           |
+            // |   BT 4  |      |      |                                    |         |       |       |       |
+            // ------------------------------------------------------------------------------------------------
+
+            bindings = <
+&bt BT_CLR      &bt BT_SEL 0     &bt BT_SEL 1     &bt BT_SEL 2  &bt BT_SEL 3     &bt BT_SEL 4     &none            &none            &none      &none      &none            &none      &none  &none
+&kp TAB         &rgb_ug RGB_TOG  &rgb_ug RGB_EFF  &none         &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI  &kp PSCRN  &kp SLCK   &kp PAUSE_BREAK  &kp UP     &none  &none
+&none           &none            &rgb_ug RGB_EFR  &none         &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &kp HOME   &kp PG_UP  &kp LEFT         &kp RIGHT         &none
+&kp LEFT_SHIFT  &none            &none            &none         &none            &none            &none            &none            &kp END    &kp PG_DN  &kp DOWN                           &none
+&kp LCTRL       &kp LEFT_GUI                      &kp LEFT_ALT                                    &none                                                   &none            &none      &none  &none
+            >;
+        };
+    };
 };
