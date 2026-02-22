@@ -59,14 +59,6 @@ jobs:
           -DZMK_CONFIG="${GITHUB_WORKSPACE}/config" \
           -DCONFIG_ZMK_STUDIO=y \
           -DSNIPPET=studio-rpc-usb-uart
-      - name: Build (west build)
-        run: |
-          west build -s zmk/app -b nice60 -- \
-          -DZMK_CONFIG="${GITHUB_WORKSPACE}/config" \
-          -DCONFIG_ZMK_STUDIO=y \
-          -DCONFIG_ZMK_STUDIO_RPC_USB_UART=y \
-          -DCONFIG_USB_DEVICE_STACK=y \
-          -DCONFIG_USB_CDC_ACM=y
       - name: Archive artifacts
         uses: actions/upload-artifact@v4
         with:
