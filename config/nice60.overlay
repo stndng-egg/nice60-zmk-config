@@ -1,5 +1,1 @@
-/ {
-    chosen {
-        zephyr,udc0 = &usbd;
-    };
-};
+
