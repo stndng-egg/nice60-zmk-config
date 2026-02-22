@@ -1,5 +1,16 @@
+/* 별칭이 아닌 라벨 자체를 정의하는 방식 */
+&usbd {
+    status = "okay";
+    cdc_acm_uart0: cdc_acm_uart0 {
+        compatible = "zephyr,cdc-acm-uart";
+    };
+};
+
 / {
     chosen {
         zephyr,udc0 = &usbd;
     };
 };
+
+/* 스니펫이 찾는 라벨을 강제로 할당 */
+zephyr_udc0: &usbd {};
