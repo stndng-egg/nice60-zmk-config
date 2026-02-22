@@ -54,8 +54,12 @@ jobs:
           echo "shield-arg=${SHIELD_ARG}" >> $GITHUB_OUTPUT
           echo "artifact-name=${ARTIFACT_NAME}" >> $GITHUB_OUTPUT
       - name: Build (west build)
-        run: west build -s zmk/app -b ${{ matrix.board }} -- ${{ steps.variables.outputs.shield-arg }}
-          -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+        run: |
+          west build -s zmk/app -b ${{ matrix.board }} -- \
+          ${{ steps.variables.outputs.shield-arg }} \
+          -DZMK_CONFIG="${GITHUB_WORKSPACE}/config" \
+          -DCONFIG_ZMK_STUDIO=y \
+          -DEXTRA_CONF_FILE="studio_rpc_usb_uart.conf"
       - name: Archive artifacts
         uses: actions/upload-artifact@v3
         with:
