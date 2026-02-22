@@ -58,8 +58,7 @@ jobs:
           west build -s zmk/app -b ${{ matrix.board }} -- \
           ${{ steps.variables.outputs.shield-arg }} \
           -DZMK_CONFIG="${GITHUB_WORKSPACE}/config" \
-          -DCONFIG_ZMK_STUDIO=y \
-          -DEXTRA_CONF_FILE="studio_rpc_usb_uart.conf"
+          -DCONFIG_ZMK_STUDIO=y
       - name: Archive artifacts
         uses: actions/upload-artifact@v3
         with:
