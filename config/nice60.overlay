@@ -1,0 +1,12 @@
+/ {
+    chosen {
+        zephyr,udc0 = &usbd;
+    };
+};
+
+&usbd {
+    status = "okay";
+    cdc_acm_uart0: cdc_acm_uart0 {
+        compatible = "zephyr,cdc-acm-uart";
+    };
+};
