@@ -1,3 +1,4 @@
+name: Build
 on: [push, pull_request, workflow_dispatch]
 
 env:
@@ -7,5 +8,5 @@ jobs:
   build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.2
     with:
-      # 빌드할 보드 이름을 여기에 적어줘야 에러가 나지 않습니다.
       build_matrix_path: "build.yaml"
+      config_path: "config"
