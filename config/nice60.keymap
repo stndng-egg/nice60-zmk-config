@@ -68,7 +68,7 @@
 &kp TAB    &none     &none      &none     &none            &none   &kp PG_UP  &kp HOME  &kp UP    &kp END    &none     &none    &none        &kp BSLH
 &tog 2     &none     &kp PSCRN  &kp SLCK  &kp PAUSE_BREAK  &none   &kp PG_DN  &kp LEFT  &kp DOWN  &kp RIGHT  &none     &none                 &kp RET
 &kp LSHFT  &none     &none      &none     &none            &none   &none      &none     &none     &none      &none                           &kp RSHFT
-&kp LCTRL  &kp LWIN             &kp LALT                           &kp SPACE                                 &kp RALT  &trans   &kp K_CMENU  &none
+&kp LCTRL  &kp LWIN             &kp LALT                           &kp SPACE                                 &kp RALT  &none    &kp K_CMENU  &none
             >;
         };
 
@@ -105,6 +105,16 @@
 &kp CLCK        &none            &rgb_ug RGB_EFR  &none         &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &kp HOME   &kp PG_UP  &kp LEFT         &kp RIGHT         &none
 &kp LEFT_SHIFT  &none            &none            &none         &none            &none            &none            &none            &kp END    &kp PG_DN  &kp DOWN                           &none
 &kp LCTRL       &kp LEFT_GUI                      &kp LEFT_ALT                                    &none                                                   &none            &none      &none  &none
+            >;
+        };
+
+        layer4new {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans          &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans                  &trans
+&trans  &trans          &trans                  &trans                          &trans  &trans  &trans  &trans
             >;
         };
     };
